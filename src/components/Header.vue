@@ -2,7 +2,12 @@
   <header>
     <h1>logo che andrà a sinistra</h1>
     <form>
-      <input type="text" placeholder="Cerca..." />
+      <input
+        @keyup.prevent="getFilmToSearch"
+        v-model="filmToSearch"
+        type="text"
+        placeholder="Cerca..."
+      />
       <button>Cerca</button>
     </form>
   </header>
@@ -11,6 +16,16 @@
 <script>
 export default {
   name: "Header",
+  data() {
+    return {
+      filmToSearch: "",
+    };
+  },
+  methods: {
+    getFilmToSearch() {
+      this.$emit("getFilmToSearch", this.filmToSearch);
+    },
+  },
 };
 </script>
 
