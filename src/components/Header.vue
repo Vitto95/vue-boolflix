@@ -2,13 +2,8 @@
   <header>
     <h1>logo che andrà a sinistra</h1>
     <form>
-      <input
-        @keyup.prevent="getFilmToSearch"
-        v-model="filmToSearch"
-        type="text"
-        placeholder="Cerca..."
-      />
-      <button>Cerca</button>
+      <input v-model="filmToSearch" type="text" placeholder="Cerca..." />
+      <button @click.prevent="getFilmToSearch">Cerca</button>
     </form>
   </header>
 </template>
