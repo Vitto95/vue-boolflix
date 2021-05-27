@@ -6,6 +6,11 @@
       :filteredArrData="filteredResults.movie"
       :typeData="type"
     />
+    <Main
+      v-if="filteredResults.tv.length > 0"
+      :filteredArrData="filteredResults.tv"
+      :typeData="type"
+    />
 
     <div>{{ query }}</div>
     <div>{{ type }}</div>
@@ -63,7 +68,7 @@ export default {
             console.log(resp.data.results);
             this.filteredResults[type] = resp.data.results;
             console.log("Dati filtrati in chiamata API:");
-            console.log(this.filteredResults.type);
+            console.log(this.filteredResults[type]);
           })
           .catch((err) => {
             console.log(err);
