@@ -1,7 +1,12 @@
 <template>
   <main>
-    <div v-for="(film, index) in filteredArr" :key="index">
-      <p>Titolo {{ film.title }}</p>
+    <div
+      class="container-film"
+      v-for="(film, index) in filteredArr"
+      :key="index"
+    >
+      <p>{{ index }}</p>
+      <p>Titolo: {{ film.title }}</p>
       <p v-if="film.title.toLowerCase() !== film.original_title.toLowerCase()">
         Titolo originale: {{ film.original_title }}
       </p>
@@ -18,8 +23,18 @@ export default {
     filteredArr: Array,
   },
 };
-
-/* Da fare: passare tramite props da App.vue l'array filtrato e mostrare a video le informazioni richieste. */
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100%;
+  background-color: lightcyan;
+  .container-film {
+    width: 25%;
+    background-color: lightsalmon;
+  }
+}
+</style>

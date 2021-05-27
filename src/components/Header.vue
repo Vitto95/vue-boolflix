@@ -3,7 +3,8 @@
     <h1>logo che andrà a sinistra</h1>
     <form>
       <input v-model="filmToSearch" type="text" placeholder="Cerca..." />
-      <button @click.prevent="getFilmToSearch">Cerca</button>
+      <button @click.prevent="getFilmToSearch">Cerca Film</button>
+      <button>Cerca Serie TV</button>
     </form>
   </header>
 </template>
@@ -17,6 +18,7 @@ export default {
     };
   },
   methods: {
+    /* funzione che manda emit all'app con la stringa per filtrare i risultati, e il tipo di ricerca da fare(film, serie tv, ecc..) */
     getFilmToSearch() {
       this.$emit("getFilmToSearch", this.filmToSearch);
     },

@@ -20,7 +20,6 @@ export default {
   data() {
     return {
       /* variabili per chiamata API */
-      axios,
       apiURL: "https://api.themoviedb.org/3/search/movie",
       apiKey: "dc976da41141e1736442fc8a7c438e96",
       query: "",
@@ -70,7 +69,7 @@ export default {
   box-sizing: border-box;
 }
 
-body {
+#app {
   width: 100vw;
   height: 100vh;
 }
