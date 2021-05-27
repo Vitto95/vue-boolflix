@@ -1,40 +1,26 @@
 <template>
   <main>
-    <div
-      class="container-film"
-      v-for="(film, index) in filteredArr"
+    <CardFilm
+      v-for="(objectCard, index) in filteredArrData"
       :key="index"
-    >
-      <p>{{ index }}</p>
-      <p>Titolo: {{ film.title }}</p>
-      <p v-if="film.title.toLowerCase() !== film.original_title.toLowerCase()">
-        Titolo originale: {{ film.original_title }}
-      </p>
-      <p>Lingua Originale: {{ film.original_language }}</p>
-      <p>Voto medio: {{ film.vote_average }}</p>
-    </div>
+      :cardObject="objectCard"
+    />
   </main>
 </template>
 
 <script>
+import CardFilm from "./CardFilm";
+
 export default {
   name: "Main",
+  components: {
+    CardFilm,
+  },
   props: {
-    filteredArr: Array,
+    filteredArrData: Array,
+    typeData: String,
   },
 };
 </script>
 
-<style lang="scss" scoped>
-main {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100vw;
-  height: 100%;
-  background-color: lightcyan;
-  .container-film {
-    width: 25%;
-    background-color: lightsalmon;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

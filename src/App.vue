@@ -1,8 +1,14 @@
 <template>
   <div id="app">
-    <Header @getFilmToSearch="getTitleFilm" />
-    <Main :filteredArr="filteredArrFilms" />
+    <Header @getQueriesToSearch="getDataResearch" />
+    <Main
+      v-if="filteredResults.movie.length > 0"
+      :filteredArrData="filteredResults.movie"
+      :typeData="type"
+    />
+
     <div>{{ query }}</div>
+    <div>{{ type }}</div>
   </div>
 </template>
 
@@ -20,43 +26,49 @@ export default {
   data() {
     return {
       /* variabili per chiamata API */
-      apiURL: "https://api.themoviedb.org/3/search/movie",
+      apiURL: "https://api.themoviedb.org/3/search/",
       apiKey: "dc976da41141e1736442fc8a7c438e96",
       query: "",
+      type: "",
       /* variabile per emit search in Header.vue */
-      filteredArrFilms: [],
+      filteredResults: {
+        movie: [],
+        tv: [],
+      },
     };
   },
   methods: {
-    getTitleFilm(text) {
-      this.query = text;
+    getDataResearch(obj) {
+      this.query = obj.text;
+      this.type = obj.type;
       console.log("Arrivo dati:");
       console.log(this.query);
-      this.getData();
+      console.log("Tipo dati: ");
+      console.log(this.type);
+      this.getData(this.query, this.type);
     },
-    getData() {
-      axios
-        .get(this.apiURL, {
-          params: {
-            api_key: this.apiKey,
-            query: this.query,
-            language: "it-IT",
-          },
-        })
-        .then((resp) => {
-          console.log("risposta corretta:");
-          console.log(resp.data);
-          console.log("Dati effettivi: ");
-          console.log(resp.data.results);
-          this.filteredArrFilms = resp.data.results.filter((item) =>
-            item.title.toLowerCase().includes(this.query.toLowerCase())
-          );
-          console.log("Array Filtrato: ");
-          console.log(this.filteredArrFilms);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    /* queryP ---> parametro */
+    getData(queryP, type) {
+      if (queryP !== "") {
+        axios
+          .get(this.apiURL + type, {
+            params: {
+              api_key: this.apiKey,
+              query: this.query,
+              language: "it-IT",
+            },
+          })
+          .then((resp) => {
+            console.log("Dati effettivi in chiamata API: ");
+            console.log(resp.data.results);
+            this.filteredResults[type] = resp.data.results;
+            console.log("Dati filtrati in chiamata API:");
+            console.log(this.filteredResults.type);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     },
   },
 };
