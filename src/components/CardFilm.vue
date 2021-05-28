@@ -1,38 +1,41 @@
 <template>
   <!-- dati per film -->
-  <div class="card" v-if="typeDataCard === 'movie'">
-    <!-- <p>Tipologia dato: {{ typeDataCard }}</p> -->
-    <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
+  <!-- <div v-if="typeDataCard === 'movie'"></div> -->
+  <!-- <p>Tipologia dato: {{ typeDataCard }}</p> -->
+  <!-- <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
     <p>Titolo: {{ cardObject.title }}</p>
     <p>Titolo originale: {{ cardObject.original_title }}</p>
-    <p>Lingua Originale: {{ cardObject.original_language }}</p>
-    <!-- <p>Voto medio decimale: {{ cardObject.vote_average }}</p> -->
-    <!-- <p>output stella piena</p> -->
-    <i
+    <p>Lingua Originale: {{ cardObject.original_language }}</p> -->
+  <!-- <p>Voto medio decimale: {{ cardObject.vote_average }}</p> -->
+  <!-- <p>output stella piena</p> -->
+  <!-- <i
       v-for="(number, index) in numberStars"
       :key="index"
       class="fas fa-star"
       :class="getRated(cardObject.vote_average) >= index + 1 ? 'yellow' : null"
     ></i>
-    <p>******************************</p>
+    <p>******************************</p> -->
 
-    <!-- FLIP CARD TEMPLATE -->
-    <!-- <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img
-            src="img_avatar.png"
-            alt="Avatar"
-            style="width:300px;height:300px;"
-          />
-        </div>
-        <div class="flip-card-back">
-          <h1>John Doe</h1>
-          <p>Architect & Engineer</p>
-          <p>We love that guy</p>
-        </div>
+  <!-- FLIP CARD TEMPLATE -->
+  <div class="flip-card" v-if="typeDataCard === 'movie'">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
       </div>
-    </div> -->
+      <div class="flip-card-back">
+        <p>Titolo: {{ cardObject.title }}</p>
+        <p>Titolo originale: {{ cardObject.original_title }}</p>
+        <p>Lingua Originale: {{ cardObject.original_language }}</p>
+        <i
+          v-for="(number, index) in numberStars"
+          :key="index"
+          class="fas fa-star"
+          :class="
+            getRated(cardObject.vote_average) >= index + 1 ? 'yellow' : null
+          "
+        ></i>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -64,10 +67,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
-  background-color: blue;
-}
-
 .yellow {
   color: yellow;
 }
@@ -77,7 +76,7 @@ export default {
 .flip-card {
   background-color: transparent;
   width: 300px;
-  height: 200px;
+  height: 300px;
   border: 1px solid #f1f1f1;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
@@ -111,6 +110,10 @@ export default {
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  img {
+    width: 300px;
+    height: 300px;
+  }
 }
 
 /* Style the back side */
