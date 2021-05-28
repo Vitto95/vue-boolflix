@@ -70,8 +70,10 @@ export default {
   background-color: transparent;
   width: 300px;
   height: 300px;
-  border: 1px solid #f1f1f1;
+  /* border: 1px solid #f1f1f1; */
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 /* This container is needed to position the front and back side */
@@ -103,6 +105,7 @@ export default {
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  overflow: hidden; /* nuova aggiunta */
   img {
     width: 300px;
     height: 300px;

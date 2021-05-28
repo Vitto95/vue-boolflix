@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Header @getQueriesToSearch="getDataResearch" />
-    <div>API url: {{ apiURL }}</div>
+    <!-- <div>API url: {{ apiURL }}</div>
     <div>Type dato: {{ type }}</div>
-    <div>url completo: {{ apiURL + type }}</div>
+    <div>url completo: {{ apiURL + type }}</div> -->
     <Main
       v-if="filteredResults.movie.length > 0"
       :filteredArrData="filteredResults.movie"
