@@ -79,8 +79,6 @@ export default {
   height: 300px;
   /* border: 1px solid #f1f1f1; */ /* RIMOSSO */
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  margin-right: 10px;
-  margin-bottom: 10px;
 }
 
 /* This container is needed to position the front and back side */
