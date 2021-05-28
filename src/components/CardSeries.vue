@@ -1,12 +1,12 @@
 <template>
   <!-- Dati per serie tv -->
-  <div class="tv-data" v-if="typeDataCard === 'tv'">
-    <p>Tipologia dato: {{ typeDataCard }}</p>
+  <div class="card" v-if="typeDataCard === 'tv'">
+    <!-- <p>Tipologia dato: {{ typeDataCard }}</p> -->
     <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
     <p>Titolo serie: {{ cardObject.name }}</p>
     <p>Lingua Originale: {{ cardObject.original_language }}</p>
     <p>Voto medio: {{ cardObject.vote_average }}</p>
-    <p>******************************************************</p>
+    <p>*********************</p>
     <span class="flag-icon flag-icon-gr"></span>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tv-data {
+.card {
   background-color: red;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="card-film-container" v-if="typeData === 'movie'">
+    <div class="card-film-container" v-show="typeData === 'movie'">
       <CardFilm
         v-for="(objectCard, index) in filteredArrData"
         :key="index"
@@ -9,7 +9,7 @@
       />
     </div>
 
-    <div class="card-film-container" v-if="typeData === 'tv'">
+    <div class="card-film-container" v-show="typeData === 'tv'">
       <CardSeries
         v-for="(objectCard, index) in filteredArrData"
         :key="index"
@@ -37,4 +37,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/* prova layout card */
+</style>

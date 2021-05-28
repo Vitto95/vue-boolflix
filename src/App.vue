@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <Header @getQueriesToSearch="getDataResearch" />
+    <div>API url: {{ apiURL }}</div>
+    <div>Type dato: {{ type }}</div>
+    <div>url completo: {{ apiURL + type }}</div>
     <Main
       v-if="filteredResults.movie.length > 0"
       :filteredArrData="filteredResults.movie"
@@ -11,9 +14,6 @@
       :filteredArrData="filteredResults.tv"
       :typeData="type"
     />
-
-    <div>{{ query }}</div>
-    <div>{{ type }}</div>
   </div>
 </template>
 
@@ -44,6 +44,9 @@ export default {
   },
   methods: {
     getDataResearch(obj) {
+      this.resetResults();
+      this.query = "";
+      this.type = "";
       this.query = obj.text;
       this.type = obj.type;
       console.log("Arrivo dati:");
@@ -52,8 +55,13 @@ export default {
       console.log(this.type);
       this.getData(this.query, this.type);
     },
+    resetResults() {
+      this.filteredResults.movie = [];
+      this.filteredResults.tv = [];
+    },
     /* queryP ---> parametro */
     getData(queryP, type) {
+      console.log("type in arrivo: ", type);
       if (queryP !== "") {
         axios
           .get(this.apiURL + type, {
