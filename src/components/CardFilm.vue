@@ -1,42 +1,27 @@
 <template>
-  <!-- dati per film -->
-  <!-- <div v-if="typeDataCard === 'movie'"></div> -->
-  <!-- <p>Tipologia dato: {{ typeDataCard }}</p> -->
-  <!-- <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
-    <p>Titolo: {{ cardObject.title }}</p>
-    <p>Titolo originale: {{ cardObject.original_title }}</p>
-    <p>Lingua Originale: {{ cardObject.original_language }}</p> -->
-  <!-- <p>Voto medio decimale: {{ cardObject.vote_average }}</p> -->
-  <!-- <p>output stella piena</p> -->
-  <!-- <i
-      v-for="(number, index) in numberStars"
-      :key="index"
-      class="fas fa-star"
-      :class="getRated(cardObject.vote_average) >= index + 1 ? 'yellow' : null"
-    ></i>
-    <p>******************************</p> -->
-
   <!-- FLIP CARD TEMPLATE -->
-  <div class="flip-card" v-if="typeDataCard === 'movie'">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
-      </div>
-      <div class="flip-card-back">
-        <p>Titolo: {{ cardObject.title }}</p>
-        <p>Titolo originale: {{ cardObject.original_title }}</p>
-        <p>Lingua Originale: {{ cardObject.original_language }}</p>
-        <i
-          v-for="(number, index) in numberStars"
-          :key="index"
-          class="fas fa-star"
-          :class="
-            getRated(cardObject.vote_average) >= index + 1 ? 'yellow' : null
-          "
-        ></i>
+  <b-carousel-slide>
+    <div class="flip-card" v-if="typeDataCard === 'movie'">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
+        </div>
+        <div class="flip-card-back">
+          <p>Titolo: {{ cardObject.title }}</p>
+          <p>Titolo originale: {{ cardObject.original_title }}</p>
+          <p>Lingua Originale: {{ cardObject.original_language }}</p>
+          <i
+            v-for="(number, index) in numberStars"
+            :key="index"
+            class="fas fa-star"
+            :class="
+              getRated(cardObject.vote_average) >= index + 1 ? 'yellow' : null
+            "
+          ></i>
+        </div>
       </div>
     </div>
-  </div>
+  </b-carousel-slide>
 </template>
 
 <script>

@@ -1,12 +1,24 @@
 <template>
   <main>
     <div class="card-container" v-show="typeData === 'movie'">
-      <CardFilm
-        v-for="(objectCard, index) in filteredArrData"
-        :key="index"
-        :cardObject="objectCard"
-        :typeDataCard="typeData"
-      />
+      <b-carousel
+        id="carousel-1"
+        v-model="slide"
+        :interval="4000"
+        controls
+        indicators
+        background="#ababab"
+        img-width="1024"
+        img-height="480"
+        style="text-shadow: 1px 1px 2px #333;"
+      >
+        <CardFilm
+          v-for="(objectCard, index) in filteredArrData"
+          :key="index"
+          :cardObject="objectCard"
+          :typeDataCard="typeData"
+        />
+      </b-carousel>
     </div>
 
     <div class="card-container" v-show="typeData === 'tv'">
