@@ -114,5 +114,6 @@ export default {
   background-color: #141414;
   color: white;
   transform: rotateY(180deg);
+  padding: 50px; /* aggiunta */
 }
 </style>

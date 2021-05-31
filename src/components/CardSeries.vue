@@ -19,7 +19,10 @@
       <div class="flip-card-back">
         <p>Titolo serie: {{ cardObject.name }}</p>
         <p>Titolo serie originale: {{ cardObject.original_name }}</p>
-        <p>Lingua Originale: {{ cardObject.original_language }}</p>
+        <p>
+          Lingua Originale:
+          <country-flag :country="cardObject.original_language" size="small" />
+        </p>
         <i
           v-for="(number, index) in numberStars"
           :key="index"
@@ -34,8 +37,13 @@
 </template>
 
 <script>
+import CountryFlag from "vue-country-flag";
+
 export default {
   name: "CardSeries",
+  components: {
+    CountryFlag,
+  },
   props: {
     cardObject: Object,
     typeDataCard: String,
@@ -116,5 +124,6 @@ export default {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
+  padding: 50px; /* aggiunta */
 }
 </style>
