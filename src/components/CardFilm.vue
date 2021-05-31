@@ -1,32 +1,39 @@
 <template>
   <!-- FLIP CARD TEMPLATE -->
-  <b-carousel-slide>
-    <div class="flip-card" v-if="typeDataCard === 'movie'">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
-        </div>
-        <div class="flip-card-back">
-          <p>Titolo: {{ cardObject.title }}</p>
-          <p>Titolo originale: {{ cardObject.original_title }}</p>
-          <p>Lingua Originale: {{ cardObject.original_language }}</p>
-          <i
-            v-for="(number, index) in numberStars"
-            :key="index"
-            class="fas fa-star"
-            :class="
-              getRated(cardObject.vote_average) >= index + 1 ? 'yellow' : null
-            "
-          ></i>
-        </div>
+
+  <div class="flip-card" v-if="typeDataCard === 'movie'">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
+      </div>
+      <div class="flip-card-back">
+        <p>Titolo: {{ cardObject.title }}</p>
+        <p>Titolo originale: {{ cardObject.original_title }}</p>
+        <p>
+          Lingua Originale:
+          <country-flag :country="cardObject.original_language" size="small" />
+        </p>
+        <i
+          v-for="(number, index) in numberStars"
+          :key="index"
+          class="fas fa-star"
+          :class="
+            getRated(cardObject.vote_average) >= index + 1 ? 'yellow' : null
+          "
+        ></i>
       </div>
     </div>
-  </b-carousel-slide>
+  </div>
 </template>
 
 <script>
+import CountryFlag from "vue-country-flag";
+
 export default {
   name: "CardFilm",
+  components: {
+    CountryFlag,
+  },
   props: {
     cardObject: Object,
     typeDataCard: String,
@@ -60,8 +67,8 @@ export default {
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 500px;
   /* border: 1px solid #f1f1f1; */ /* RIMOSSO */
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
@@ -97,14 +104,14 @@ export default {
   color: black;
   overflow: hidden; /* nuova aggiunta */
   img {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 500px;
   }
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: #141414;
   color: white;
   transform: rotateY(180deg);
 }

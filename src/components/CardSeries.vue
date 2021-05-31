@@ -18,6 +18,7 @@
       </div>
       <div class="flip-card-back">
         <p>Titolo serie: {{ cardObject.name }}</p>
+        <p>Titolo serie originale: {{ cardObject.original_name }}</p>
         <p>Lingua Originale: {{ cardObject.original_language }}</p>
         <i
           v-for="(number, index) in numberStars"
@@ -69,8 +70,8 @@ export default {
 .flip-card {
   background-color: transparent;
   width: 300px;
-  height: 300px;
-  /* border: 1px solid #f1f1f1; */
+  height: 500px;
+  /* border: 1px solid #f1f1f1; */ /* RIMOSSO */
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -106,7 +107,7 @@ export default {
   overflow: hidden; /* nuova aggiunta */
   img {
     width: 300px;
-    height: 300px;
+    height: 500px;
   }
 }
 
