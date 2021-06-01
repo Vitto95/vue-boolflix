@@ -46,7 +46,6 @@ header {
   align-items: baseline;
   justify-content: space-between;
   height: 100px;
-  min-width: 1100px;
   background-color: #141414;
 }
 
@@ -100,6 +99,12 @@ form {
 @media all and (max-width: 1200px) {
   form input {
     width: 150px;
+  }
+}
+
+@media all and (max-width: 850px) {
+  button {
+    font-size: 0.65em;
   }
 }
 </style>

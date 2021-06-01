@@ -1,31 +1,3 @@
-<template>
-  <!-- FLIP CARD TEMPLATE -->
-  <div class="flip-card" v-if="typeDataCard === 'tv'">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img :src="getImageUrl(cardObject.poster_path)" alt="img" />
-      </div>
-      <div class="flip-card-back">
-        <p>Titolo serie: {{ cardObject.name }}</p>
-        <p>Titolo serie originale: {{ cardObject.original_name }}</p>
-        <p>
-          Lingua Originale:
-          <country-flag :country="cardObject.original_language" size="small" />
-        </p>
-        <i
-          v-for="(number, index) in numberStars"
-          :key="index"
-          class="fas fa-star"
-          :class="
-            getRated(cardObject.vote_average) >= index + 1 ? 'yellow' : null
-          "
-        ></i>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
 import CountryFlag from "vue-country-flag";
 
 export default {
@@ -64,8 +36,3 @@ export default {
     },
   },
 };
-</script>
-
-<style lang="scss" scoped>
-@import "../assets/styles/card.scss";
-</style>

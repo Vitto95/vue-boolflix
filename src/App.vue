@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <Header @getQueriesToSearch="getDataResearch" />
-    <!-- <div>API url: {{ apiURL }}</div>
-    <div>Type dato: {{ type }}</div>
-    <div>url completo: {{ apiURL + type }}</div> -->
     <Main
       v-if="filteredResults.movie.length > 0"
       :filteredArrData="filteredResults.movie"
@@ -14,39 +11,6 @@
       :filteredArrData="filteredResults.tv"
       :typeData="type"
     />
-
-    <!--   <b-carousel
-      id="carousel-1"
-      v-model="slide"
-      :interval="4000"
-      controls
-      indicators
-      background="#ababab"
-      img-width="1024"
-      img-height="480"
-      style="text-shadow: 1px 1px 2px #333;"
-    >
-      <b-carousel-slide
-        caption="First slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="https://picsum.photos/1024/480/?image=52"
-      ></b-carousel-slide>
-      <b-carousel-slide
-        caption="Second slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="https://picsum.photos/1024/480/?image=54"
-      ></b-carousel-slide>
-      <b-carousel-slide
-        caption="thid slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="https://picsum.photos/1024/480/?image=53"
-      ></b-carousel-slide>
-      <b-carousel-slide
-        caption="fourth slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="https://picsum.photos/1024/480/?image=58"
-      ></b-carousel-slide>
-    </b-carousel> -->
   </div>
 </template>
 
@@ -80,7 +44,7 @@ export default {
       this.resetResults();
       this.query = "";
       this.type = "";
-      this.query = obj.text;
+      this.query = obj.text; /* Valore ottenuto da v-model */
       this.type = obj.type;
       console.log("Arrivo dati:");
       console.log(this.query);
@@ -89,9 +53,11 @@ export default {
       this.getData(this.query, this.type);
     },
     resetResults() {
+      /* funzione per resettare gli array con i risultati della chiamata */
       this.filteredResults.movie = [];
       this.filteredResults.tv = [];
     },
+    /* Funzione per chiamata API */
     /* queryP ---> parametro */
     getData(queryP, type) {
       console.log("type in arrivo: ", type);
@@ -131,6 +97,7 @@ export default {
 
 #app {
   height: 100vh;
+  min-width: 700px;
   background-color: #141414;
 }
 </style>

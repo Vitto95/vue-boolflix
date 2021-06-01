@@ -44,30 +44,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* main {
-  display: flex;
-  justify-content: center; */
-/*   padding: 50px; */
-/*   background-color: black;
-} */
-/* .card-container {
-  display: grid;
-  grid-template-columns: repeat(5, 300px);
-  gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-}
- */
-/* media query */
-/* 
-@media all and (min-width: 1024px) and (max-width: 1700px) {
-  .card-container {
-    grid-template-columns: repeat(4, 300px);
-  }
-} */
-
 main {
-  min-width: 1100px;
   background-color: #141414;
+}
+
+main h2 {
+  color: white;
 }
 
 .cards-container {
@@ -75,8 +57,8 @@ main {
   max-width: 1800px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 500px;
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
+  grid-auto-rows: minmax(500px, 75vh);
   column-gap: 10px;
   row-gap: 20px;
   background-color: #141414;
@@ -88,7 +70,7 @@ main {
   }
 }
 
-@media all and (max-width: 1100px) {
+@media all and (max-width: 768px) {
   .cards-container {
     grid-template-columns: repeat(2, 1fr);
   }
