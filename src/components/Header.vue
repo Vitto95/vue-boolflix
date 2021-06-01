@@ -43,7 +43,6 @@ export default {
 <style lang="scss" scoped>
 header {
   display: flex;
-  align-items: baseline;
   justify-content: space-between;
   height: 100px;
   background-color: #141414;

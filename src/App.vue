@@ -45,7 +45,8 @@ export default {
       this.query = "";
       this.type = "";
       this.query = obj.text; /* Valore ottenuto da v-model */
-      this.type = obj.type;
+      this.type =
+        obj.type; /* Valore passato come parametro da funzione con emit in Header.vue */
       console.log("Arrivo dati:");
       console.log(this.query);
       console.log("Tipo dati: ");
